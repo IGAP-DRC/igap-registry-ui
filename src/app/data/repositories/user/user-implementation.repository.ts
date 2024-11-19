@@ -6,13 +6,13 @@ import { UserImplementationRepositoryMapper } from './mappers/user-repository.ma
 import { Injectable } from '@angular/core';
 import { UserModel } from '../../../domain/models/user.model';
 import { UserRepository } from '../../../domain/repositories/user.repository';
+import { environment } from '../../../../environments/environment.development';
+import { LoginDTO } from './dto/login.dto';
 
 @Injectable({
     providedIn: 'root',
 })
 export class UserImplementationRepository extends UserRepository {
-
-    baseUrl='http://localhost:8080';
     
     userMapper = new UserImplementationRepositoryMapper();
 
@@ -20,20 +20,20 @@ export class UserImplementationRepository extends UserRepository {
         super();
     }
 
-    login(params: {email: string, password: string}): Observable<any> {
+    login(user:LoginDTO): Observable<any> {
         return this.http
-            .post<UserEntity>(this.baseUrl+'/api/auth/login', params)
+            .post<UserEntity>(environment.baseUrl+'/api/auth/login', user)
             .pipe(map(this.userMapper.mapFrom));
     }
 
     register(user:UserModel): Observable<any> {
        return this.http
-            .post<UserEntity>(this.baseUrl+'/api/auth/register', user)
+            .post<UserEntity>(environment.baseUrl+'/api/auth/register', user)
             .pipe(map(this.userMapper.mapFrom));
     }
     
     getUserProfile(): Observable<UserModel>{
-        return this.http.get<UserEntity>(this.baseUrl+'/api/auth/profil').pipe(
+        return this.http.get<UserEntity>(environment.baseUrl+'/api/auth/profil').pipe(
             map(this.userMapper.mapFrom));
     }
 }

@@ -2,15 +2,16 @@ import { Observable } from 'rxjs';
 import { UseCase } from '../../../base/use-case';
 import { UserModel } from '../../models/user.model';
 import { UserRepository } from '../../repositories/user.repository';
+import { LoginDTO } from '../../../data/repositories/user/dto/login.dto';
 
-export class UserLoginUseCase implements UseCase<{ email: string; password: string }, void> {
+export class UserLoginUseCase implements UseCase<LoginDTO, void> {
 
     constructor(private userRepository: UserRepository) { }
 
     execute(
-       params: { email: string, password: string },
+      user:LoginDTO,
     ): Observable<any> {
-        return this.userRepository.login(params);
+        return this.userRepository.login(user);
     }
 
     

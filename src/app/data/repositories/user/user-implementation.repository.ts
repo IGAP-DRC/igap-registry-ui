@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { UserEntity } from './entities/user-entity';
 import { UserImplementationRepositoryMapper } from './mappers/user-repository.mapper';
 import { Injectable } from '@angular/core';
+import { UserModel } from '../../../domain/models/user.model';
+import { UserRepository } from '../../../domain/repositories/user.repository';
 
 @Injectable({
     providedIn: 'root',

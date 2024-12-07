@@ -1,0 +1,842 @@
+<div class="form-container mt-3">
+    <div class="progress-bar">
+        <div class="progress" [style.width]="progressWidth"></div>
+    </div>
+    <form (ngSubmit)="onSubmit()">
+        <!-- Étape 1 -->
+        @if(currentStep === 0){
+        <div class="form-group">
+            <h2>Informations Personnelles</h2>
+            <div>
+                <label for="genre">Genre</label>
+                <select id="genre" name="genre" class="form-control form-control-lg" required>
+                    <option value="">Sélectionnez</option>
+                    <option value="masculin">Masculin</option>
+                    <option value="féminin">Féminin</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="nom">Postnom</label>
+                    <input type="text" id="nom" name="nom" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="nom">Lieu de naissance</label>
+                    <input type="text" id="nom" name="nom" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="prenom">Date de naissance</label>
+                    <input type="date" id="prenom" name="prenom" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="nom">Nature piece d'identite</label>
+                    <input type="text" id="nom" name="nom" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="prenom">Numero piece d'identite</label>
+                    <input type="text" id="prenom" name="prenom" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="nom">Date de délivrance pièce d'identité</label>
+                    <input type="text" id="nom" name="nom" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="prenom">Lieu de délivrance pièce d'identité</label>
+                    <input type="text" id="prenom" name="prenom" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="nom">Date d’expiration pièce d'identité</label>
+                    <input type="date" id="nom" name="nom" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Étape 2 -->
+
+        @if(currentStep === 1){
+        <div class="form-group">
+            <h2>Adresse Physique</h2>
+            <div class="row">
+                <div class="col">
+                    <label for="province">Nom de la Province</label>
+                    <input type="text" id="province" name="province" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="ville">Ville</label>
+                    <input type="text" id="ville" name="ville" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="province">Nom de la commune</label>
+                    <input type="text" id="province" name="province" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="ville">Nom du quartier</label>
+                    <input type="text" id="ville" name="ville" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="province">Nom de l'avenue</label>
+                    <input type="text" id="province" name="province" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="ville">Numero</label>
+                    <input type="number" id="ville" name="ville" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+
+        }
+
+        <!-- Étape 3 -->
+
+        @if(currentStep === 2){
+        <div class="form-group">
+            <h2>Contacts Personnels</h2>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Numéro de téléphone</label>
+                    <input type="tel" id="telephone" name="telephone" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="email">Adresse électronique</label>
+                    <input type="email" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+        }
+
+        @if(currentStep === 3){
+        <div class="form-group">
+            <h2>Personnes a Contacter</h2>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Nom</label>
+                    <input type="text" id="telephone" name="telephone" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="email">Postnom</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Prenom</label>
+                    <input type="text" id="telephone" name="telephone" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="email">Lien de parenté</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Numeros de telephone</label>
+                    <input type="text" id="telephone" name="telephone" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="email">Adresses electroniques</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+        }
+
+
+        @if(currentStep === 4){
+        <div class="form-group">
+            <h2>Information familiale</h2>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Etat Civil</label>
+                    <select id="genre" name="genre" class="form-control form-control-lg" required>
+                        <option value="">Sélectionnez</option>
+                        <option value="masculin">Marié</option>
+                        <option value="féminin">Celibateur</option>
+                        <option value="féminin">Divorcé</option>
+                    </select>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+        }
+
+        @if(currentStep === 5){
+        <div class="form-group">
+            <h2>Nombre d'enfant</h2>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">En chiffre</label>
+                    <input type="number" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">En lettre</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+        }
+
+
+        @if(currentStep === 6){
+        <div class="form-group">
+            <h2>Engagement</h2>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Numero Matricule</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Categorie Grade</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Grade Admission</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Numero Acte</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Date signature d’acte</label>
+                    <input type="date" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Référence Acte</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+        }
+
+        @if(currentStep === 7){
+        <div class="form-group">
+            <h2>Grade Statutaire</h2>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Grade statutaire</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Nature Acte </label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Référence Acte</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Date signature d’acte</label>
+                    <input type="date " id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+        }
+
+        @if(currentStep === 8){
+        <div class="form-group">
+            <h2>Grade Fonction</h2>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Grade Fonction</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Nature Acte </label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Référence Acte de désignation</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Date signature d’acte</label>
+                    <input type="date " id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+        }
+
+        @if(currentStep === 9){
+        <div class="form-group">
+            <h2>Avancements dans differents grades</h2>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Grade Promotion 1</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Référence Acte Promotion 1</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Grade Promotion 2</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Référence Acte Promotion 2</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Grade Promotion 3</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Référence Acte Promotion 3</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Grade Promotion 4</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Référence Acte Promotion 4</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+        }
+
+        @if(currentStep === 10){
+        <div class="form-group">
+            <h2>Transfert</h2>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Nature Acte</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Administration Actuelle</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Administration de Provenance</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Référence Acte</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="telephone">Date signature d’acte</label>
+                    <input type="date" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+                <div class="col">
+                    <label for="telephone">Signateur Acte</label>
+                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="nextStep()">Suivant</button>
+                </div>
+            </div>
+        </div>
+        }
+        
+        @if(currentStep === 11){
+            <div class="form-group">
+                <h2>Etudes Faites</h2>
+                <h6>Etude Superieur</h6>
+                <div class="row">
+                    <div class="col">
+                        <label for="telephone">Niveau d’étude</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="col">
+                        <label for="telephone">Filière</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="telephone">Année d’obtention</label>
+                        <input type="date" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="col">
+                        <label for="telephone">Nom de l'Etablissement</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="telephone">Pays de l'Etablissement</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="col">
+                        <label for="telephone">Province de l'Etablissement</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="telephone">Ville de l’Etablissement</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="col">
+                        <label for="telephone">Nature pièce/titre (Dipl, Attest, Certific, etc)</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="telephone">Reference piece</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="col">
+                        <label for="telephone">Date de délivrance pièce/titre</label>
+                        <input type="date" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                </div>
+                <h6 class="mt-3">Etude Secondaire</h6>
+                <div class="row">
+                    <div class="col">
+                        <label for="telephone">Nom de l'Etablissement</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="col">
+                        <label for="telephone">Nature pièce/titre (Dipl, Attest, Certific, etc)</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="telephone">Référence pièce/titre</label>
+                        <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="col">
+                        <label for="telephone">Année d’obtention</label>
+                        <input type="date" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                    <div class="col">
+                        <label for="telephone">Pourcentage obtenu(e)</label>
+                        <input type="number" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                            (click)="prevStep()">Précédent</button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                            (click)="nextStep()">Suivant</button>
+                    </div>
+                </div>
+            </div>
+            }
+
+            @if(currentStep === 12){
+                <div class="form-group">
+                    <h2>Affectation Actuelle</h2>
+                    <div class="row">
+                        <div class="col">
+                            <label for="telephone">Province de l'Institution/Service</label>
+                            <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                        </div>
+                        <div class="col">
+                            <label for="telephone">Ville de l'Institution/Service</label>
+                            <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="telephone">Ministère / Institution</label>
+                            <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                        </div>
+                        <div class="col">
+                            <label for="telephone">Secrétariat Général</label>
+                            <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="telephone">Direction Générale</label>
+                            <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                        </div>
+                        <div class="col">
+                            <label for="telephone">Direction</label>
+                            <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="telephone">Division</label>
+                            <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                        </div>
+                        <div class="col">
+                            <label for="telephone">Bureau</label>
+                            <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                        </div>
+                        <div class="col">
+                            <label for="telephone">Service</label>
+                            <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+ 
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                                (click)="prevStep()">Précédent</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                                (click)="nextStep()">Suivant</button>
+                        </div>
+                    </div>
+                </div>
+                }
+                @if(currentStep === 13){
+                    <div class="form-group">
+                        <h2>Commission d'affectation</h2>
+                        <div class="row">
+                            <div class="col">
+                                <label for="telephone">Avez-vous une Com.Aff « OUI ou NON »</label>
+                                <select id="genre" name="genre" class="form-control form-control-lg" required>
+                                    <option value="">Sélectionnez</option>
+                                    <option value="masculin">Oui</option>
+                                    <option value="féminin">Non</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="telephone">Référence Acte</label>
+                                <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="telephone">Date signature d’acte</label>
+                                <input type="date" id="email" name="email" class="form-control form-control-lg" required>
+                            </div>
+                            <div class="col">
+                                <label for="telephone">Signateur Acte</label>
+                                <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                            </div>
+                        </div>
+                     
+                       
+                   
+     
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                                    (click)="prevStep()">Précédent</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                                    (click)="nextStep()">Suivant</button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    @if(currentStep === 14){
+                        <div class="form-group">
+                            <h2>Remuneration</h2>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="telephone">Payé en salaire de base</label>
+                                    <select id="genre" name="genre" class="form-control form-control-lg" required>
+                                        <option value="">Sélectionnez</option>
+                                        <option value="masculin">Oui</option>
+                                        <option value="féminin">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="telephone">Payé en prime</label>
+                                    <select id="genre" name="genre" class="form-control form-control-lg" required>
+                                        <option value="">Sélectionnez</option>
+                                        <option value="masculin">Oui</option>
+                                        <option value="féminin">Non</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="telephone">Recensé</label>
+                                    <select id="genre" name="genre" class="form-control form-control-lg" required>
+                                        <option value="">Sélectionnez</option>
+                                        <option value="masculin">Oui</option>
+                                        <option value="féminin">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="telephone">Possession carte biometrique</label>
+                                    <select id="genre" name="genre" class="form-control form-control-lg" required>
+                                        <option value="">Sélectionnez</option>
+                                        <option value="masculin">Oui</option>
+                                        <option value="féminin">Non</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="telephone">Numero carte biometrique</label>
+                                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                                </div>
+                            </div>
+                         
+                           
+                       
+         
+                            <div class="row">
+                                <div class="col">
+                                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                                        (click)="prevStep()">Précédent</button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                                        (click)="nextStep()">Suivant</button>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        @if(currentStep === 15){
+                            <div class="form-group">
+                                <h2>Position Administrative</h2>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="telephone">Activité</label>
+                                        <input type="checkbox" id="email" name="email" class="form-control form-control-lg" required>
+                                    </div>
+                                    <div class="col">
+                                        <label for="telephone">Detachement</label>
+                                        <input type="checkbox" id="email" name="email" class="form-control form-control-lg" required>
+                                    </div>
+                                    <div class="col">
+                                        <label for="telephone">Disponibilite</label>
+                                        <input type="checkbox" id="email" name="email" class="form-control form-control-lg" required>
+                                    </div>
+                                    <div class="col">
+                                        <label for="telephone">Suspension</label>
+                                        <input type="checkbox" id="email" name="email" class="form-control form-control-lg" required>
+                                    </div>
+                                </div>
+             
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                                            (click)="prevStep()">Précédent</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                                            (click)="nextStep()">Suivant</button>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                            @if(currentStep === 16){
+                                <div class="form-group">
+                                    <h2>Autres positions</h2>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="telephone">Nature Acte</label>
+                                            <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="telephone">Référence Acte</label>
+                                            <input type="checkbox" id="email" name="email" class="form-control form-control-lg" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="telephone">Date signature d’acte</label>
+                                            <input type="date" id="email" name="email" class="form-control form-control-lg" required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="telephone">Durée</label>
+                                            <input type="number" id="email" name="email" class="form-control form-control-lg" required>
+                                        </div>
+                                    </div>
+                 
+                                    <div class="row">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                                                (click)="prevStep()">Précédent</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                                                (click)="nextStep()">Suivant</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+
+        @if(currentStep === 17){
+        <div class="form-group">
+            <h2>Finalisation</h2>
+            <p>Vérifiez vos informations avant de soumettre.</p>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3"
+                        (click)="prevStep()">Précédent</button>
+                </div>
+                <div class="col">
+                    <button type="submit"
+                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3">Soumettre</button>
+                </div>
+            </div>
+
+
+        </div>
+        }
+
+    </form>
+</div>

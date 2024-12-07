@@ -1,0 +1,25 @@
+.form-container {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.progress-bar {
+    background: #ddd;
+    height: 5px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    background: #007bff;
+    height: 100%;
+    width: 0;
+    transition: width 0.4s ease-in-out;
+}
+

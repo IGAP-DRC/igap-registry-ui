@@ -2,7 +2,7 @@
     <div class="progress-bar">
         <div class="progress" [style.width]="progressWidth"></div>
     </div>
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="agentForm" (ngSubmit)="onSubmit()">
         <!-- Étape 1 -->
         @if(currentStep === 0){
         <div class="form-group">

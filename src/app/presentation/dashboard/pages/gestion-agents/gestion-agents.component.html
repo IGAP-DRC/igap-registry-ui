@@ -195,27 +195,29 @@
                             <th>Prenom</th>
                             <th>Genre</th>
                             <th>Matricule</th>
-                            <th>Telephone</th>
                             <th>Actions</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Ndoma</td>
-                            <td>Zantoto</td>
-                            <td>Riddy</td>
-                            <td>Masculin</td>
-                            <td>0000</td>
-                            <td>243820699170</td>
-                            <td>
-                                <button type="button" class="btn btn-danger btn-rounded btn-icon">
-                                    -
-                                  </button> &nbsp;
-                                  <button type="button" class="btn btn-success btn-rounded btn-icon">
-                                    #
-                                  </button>
-                            </td>
-                          </tr>
+
+                          @for(agent of data; track $index){
+                            <tr>
+                              <td>{{agent.firstName}}</td>
+                              <td>{{agent.lastName}}</td>
+                              <td>{{agent.middleName}}</td>
+                              <td>{{agent.gender}}</td>
+                              <td>{{agent.agentIDNumber}}</td>
+                              <td>
+                                  <button type="button" class="btn btn-danger btn-rounded btn-icon">
+                                      -
+                                    </button> &nbsp;
+                                    <button type="button" class="btn btn-success btn-rounded btn-icon">
+                                      #
+                                    </button>
+                              </td>
+                            </tr>
+                          }
+                          
                           
                         </tbody>
                       </table>

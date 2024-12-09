@@ -2,69 +2,72 @@
     <div class="progress-bar">
         <div class="progress" [style.width]="progressWidth"></div>
     </div>
-    <form [formGroup]="agentForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="agentForm">
         <!-- Étape 1 -->
         @if(currentStep === 0){
         <div class="form-group">
             <h2>Informations Personnelles</h2>
             <div>
                 <label for="genre">Genre</label>
-                <select id="genre" name="genre" class="form-control form-control-lg" required>
-                    <option value="">Sélectionnez</option>
-                    <option value="masculin">Masculin</option>
-                    <option value="féminin">Féminin</option>
-                </select>
+                <select id="gender" formControlName="gender" class="form-control form-control-lg">
+                    <option value="MALE">Masculin</option>
+                    <option value="FEMALE">Féminin</option>
+                  </select>
             </div>
             <div class="row">
                 <div class="col">
                     <label for="nom">Nom</label>
-                    <input type="text" id="nom" name="nom" class="form-control form-control-lg" required>
+                    <input type="text" id="nom" name="nom" class="form-control form-control-lg" formControlName="lastName"required>
                 </div>
                 <div class="col">
                     <label for="postnom">Postnom</label>
-                    <input type="text" id="postnom" name="postnom" class="form-control form-control-lg" required>
+                    <input type="text" id="postnom" name="postnom" class="form-control form-control-lg" formControlName="middleName" required>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
                     <label for="prenom">Prénom</label>
-                    <input type="text" id="prenom" name="prenom" class="form-control form-control-lg" required>
+                    <input type="text" id="prenom" name="prenom" class="form-control form-control-lg" formControlName="firstName" required>
                 </div>
                 <div class="col">
                     <label for="lieu_naissance">Lieu de naissance</label>
-                    <input type="text" id="lieu_naissance" name="lieu_naissance" class="form-control form-control-lg" required>
+                    <input type="text" id="lieu_naissance" name="lieu_naissance" class="form-control form-control-lg" formControlName="birthPlace" required>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
                     <label for="date_naissance">Date de naissance</label>
-                    <input type="date" id="date_naissance" name="date_naissance" class="form-control form-control-lg" required>
+                    <input type="date" id="date_naissance" name="date_naissance" class="form-control form-control-lg" formControlName="dateOfBirth" required>
                 </div>
                 <div class="col">
                     <label for="piece_identite">Nature piece d'identite</label>
-                    <input type="text" id="piece_identite" name="piece_identite" class="form-control form-control-lg" required>
+                    <select id="identityCardType" formControlName="identityCardType" class="form-control form-control-lg">
+                        <option value="PASSPORT">Passeport</option>
+                        <option value="NATIONAL_ID">Carte Nationale</option>
+                        <option value="OTHER">Autre</option>
+                      </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label for="num_piece_identite">Numero piece d'identite</label>
-                    <input type="text" id="num_piece_identite" name="num_piece_identite" class="form-control form-control-lg" required>
+                    <input type="text" id="num_piece_identite" name="num_piece_identite" class="form-control form-control-lg" formControlName="identityCardNumber" required>
                 </div>
                 <div class="col">
                     <label for="date_deliv_piece_identite">Date de délivrance pièce d'identité</label>
-                    <input type="text" id="date_deliv_piece_identite" name="date_deliv_piece_identite" class="form-control form-control-lg" required>
+                    <input type="text" id="date_deliv_piece_identite" name="date_deliv_piece_identite" class="form-control form-control-lg" formControlName="identityCardIssueDate" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label for="lieu_deliv_piece_identite">Lieu de délivrance pièce d'identité</label>
-                    <input type="text" id="lieu_deliv_piece_identite" name="lieu_deliv_piece_identite" class="form-control form-control-lg" required>
+                    <input type="text" id="lieu_deliv_piece_identite" name="lieu_deliv_piece_identite" class="form-control form-control-lg" formControlName="identityCardIssuePlace" required>
                 </div>
                 <div class="col">
                     <label for="date_expir_piece_identite">Date d’expiration pièce d'identité</label>
-                    <input type="date" id="date_expir_piece_identite" name="date_expir_piece_identite" class="form-control form-control-lg" required>
+                    <input type="date" id="date_expir_piece_identite" name="date_expir_piece_identite" class="form-control form-control-lg" formControlName="identityCardExpiryDate" required>
                 </div>
             </div>
 
@@ -97,11 +100,11 @@
             <div class="row">
                 <div class="col">
                     <label for="nom_commune">Nom de la commune</label>
-                    <input type="text" id="nom_commune" name="nom_commune" class="form-control form-control-lg" required>
+                    <input type="text" id="nom_commune" name="nom_commune" class="form-control form-control-lg"  required>
                 </div>
                 <div class="col">
                     <label for="nom_quartier">Nom du quartier</label>
-                    <input type="text" id="nom_quartier" name="nom_quartier" class="form-control form-control-lg" required>
+                    <input type="text" id="nom_quartier" name="nom_quartier" class="form-control form-control-lg"  required>
                 </div>
             </div>
             <div class="row">
@@ -241,7 +244,7 @@
             <div class="row">
                 <div class="col">
                     <label for="en_chiffre">En chiffre</label>
-                    <input type="number" id="en_chiffre" name="en_chiffre" class="form-control form-control-lg" required>
+                    <input type="number" id="en_chiffre" name="en_chiffre" class="form-control form-control-lg"  formControlName="numberOfChildren" required>
                 </div>
                 <div class="col">
                     <label for="en_lettre">En lettre</label>
@@ -269,7 +272,7 @@
             <div class="row">
                 <div class="col">
                     <label for="num_matricule">Numero Matricule</label>
-                    <input type="text" id="num_matricule" name="num_matricule" class="form-control form-control-lg" required>
+                    <input type="text" id="num_matricule" name="num_matricule" class="form-control form-control-lg" formControlName="agentIDNumber" required>
                 </div>
                 <div class="col">
                     <label for="cat_grade">Categorie Grade</label>
@@ -721,7 +724,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="telephone">Possession carte biometrique</label>
-                                    <select id="genre" name="genre" class="form-control form-control-lg" required>
+                                    <select id="genre" name="genre" class="form-control form-control-lg" formControlName="hasBiometricCard" required>
                                         <option value="">Sélectionnez</option>
                                         <option value="masculin">Oui</option>
                                         <option value="féminin">Non</option>
@@ -729,7 +732,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="telephone">Numero carte biometrique</label>
-                                    <input type="text" id="email" name="email" class="form-control form-control-lg" required>
+                                    <input type="text" id="email" name="email" class="form-control form-control-lg" formControlName="biometricCardNumber" required>
                                 </div>
                             </div>
                          
@@ -830,7 +833,7 @@
                 </div>
                 <div class="col">
                     <button type="submit"
-                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3">Soumettre</button>
+                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3" (click)="addData()">Soumettre</button>
                 </div>
             </div>
 

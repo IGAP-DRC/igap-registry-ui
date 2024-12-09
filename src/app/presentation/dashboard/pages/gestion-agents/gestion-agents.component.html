@@ -182,7 +182,7 @@
                   <div class="card-body">
                     <h4 class="card-title">Liste des agents</h4>
                     <p class="card-description">
-                        <button type="button" class="btn btn-primary btn-rounded btn-icon">
+                        <button type="button" class="btn btn-primary btn-rounded btn-icon" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             +
                           </button>
                     </p>
@@ -227,8 +227,18 @@
        
         <app-footer></app-footer>
       </div>
-
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+    
+              <app-agents></app-agents>
+               
+            </div>
+        </div>
+    </div>
     </div>   
+
+   
 
   </div>
 

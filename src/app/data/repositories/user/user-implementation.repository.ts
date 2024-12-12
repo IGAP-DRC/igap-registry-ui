@@ -36,4 +36,9 @@ export class UserImplementationRepository extends UserRepository {
         return this.http.get<UserEntity>(environment.baseUrl+'/api/auth/profil').pipe(
             map(this.userMapper.mapFrom));
     }
+
+    isAuthenticated(): boolean {
+        const data = localStorage.getItem("data");
+        return data !== null;
+     }
 }

@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserLoginUseCase } from '../../../domain/usecases/user/user-login.usecase';
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -14,7 +15,7 @@ export class LoginComponent {
 
   loginForm:FormGroup;
 
-  constructor(private fb:FormBuilder, private auth:UserLoginUseCase, private router:Router){
+  constructor(private fb:FormBuilder, private router:Router, private auth:UserLoginUseCase){
     this.loginForm = this.fb.group({
       email: [''],
       password: ['']

@@ -4,11 +4,12 @@ import { RegisterComponent } from './presentation/auth-ui/register/register.comp
 import { DashboardComponent } from './presentation/dashboard/dashboard.component';
 import { AgentsComponent } from './presentation/shared/agents-form/agents.component';
 import { GestionAgentsComponent } from './presentation/dashboard/pages/gestion-agents/gestion-agents.component';
+import { authGuard } from './core/guard/auth/auth.guard';
 
 export const routes: Routes = [
     {path:"", pathMatch:"full", redirectTo: "auth/login"},
     {path: "auth/login", component: LoginComponent},
     {path: "auth/register", component: RegisterComponent},
-    {path: "dashboard/home", component: DashboardComponent},
-    {path: "dashboard/agents", component: GestionAgentsComponent}
+    {path: "dashboard/home", component: DashboardComponent, canActivate:[]},
+    {path: "dashboard/agents", component: GestionAgentsComponent, canActivate: []}
 ];

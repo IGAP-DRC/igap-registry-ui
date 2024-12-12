@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { DataModule } from './data/data.module';
 import { provideHttpClient } from '@angular/common/http';
+import { UserLoginUseCase } from './domain/usecases/user/user-login.usecase';
 
 export const appConfig: ApplicationConfig = {
   providers: [

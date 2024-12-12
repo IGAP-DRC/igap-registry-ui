@@ -5,6 +5,7 @@ import { UserLoginUseCase } from "../domain/usecases/user/user-login.usecase";
 import { UserRegisterUseCase } from "../domain/usecases/user/user-register.usecase";
 import { UserImplementationRepository } from "./repositories/user/user-implementation.repository";
 import { CommonModule } from "@angular/common";
+import { IsAuthenticatedUseCase } from "../domain/usecases/user/is-authenticated";
 
 
 const userLoginUseCaseFactory =
@@ -31,12 +32,21 @@ export const getUserProfileUseCaseProvider = {
     deps: [UserRepository],
 };
 
+const getIsAuthenticatedUseCaseFactory =
+    (userRepo: UserRepository) => new IsAuthenticatedUseCase(userRepo);
+export const getIsAuthenticatedUseCaseProvider = {
+    provide: IsAuthenticatedUseCase,
+    useFactory: getIsAuthenticatedUseCaseFactory,
+    deps: [UserRepository],
+};
+
 @NgModule({
     providers: [
         userLoginUseCaseProvider,
         userRegisterUseCaseProvider,
         getUserProfileUseCaseProvider,
-        
+        getIsAuthenticatedUseCaseProvider,
+
         { provide: UserRepository, useClass: UserImplementationRepository },
     ],
     imports: [
